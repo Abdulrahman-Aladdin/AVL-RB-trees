@@ -27,9 +27,9 @@ public class AVLTree <T extends Comparable<T>> {
             this.size++;
             return new Node(value);
         }
-        if (value.compareTo(node.value) < 0) {
+        if (value.compareTo(node.value) < 0) { // value < node.value
             node.left = insertNode(node.left, value);
-        } else if (value.compareTo(node.value) > 0) {
+        } else if (value.compareTo(node.value) > 0) { // value > node.value
             node.right = insertNode(node.right, value);
         } else {
             return node;
@@ -104,7 +104,7 @@ public class AVLTree <T extends Comparable<T>> {
         return this.root.height;
     }
 
-    public void PrintInOrder () {
+    public void printInOrder () {
         inOrder (this.root);
         System.out.println();
     }

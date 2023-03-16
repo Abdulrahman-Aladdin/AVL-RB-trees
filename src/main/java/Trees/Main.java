@@ -5,23 +5,24 @@ public class Main {
         AVLTree<Double> t = new AVLTree();
         System.out.println(t.height() + " " + t.size() + " " + t.isEmpty());
         t.insert(5.0);
-        t.PrintInOrder();
         t.insert(6.0);
-        t.PrintInOrder();
         t.insert(2.0);
-        t.PrintInOrder();
         t.insert(1.0);
-        t.PrintInOrder();
         t.insert(10.0);
-        t.PrintInOrder();
         t.insert(8.0);
-        t.PrintInOrder();
         t.insert(2.0);
-        t.PrintInOrder();
         t.insert(9.0);
-        t.PrintInOrder();
         t.insert(0.0);
-        t.PrintInOrder();
+        t.printInOrder();
         System.out.println(t.height() + " " + t.size() + " " + t.isEmpty());
+        AVLTree<String> s = new AVLTree();
+        System.out.println(s.height() + " " + s.size() + " " + s.isEmpty());
+        s.insert("hbj");
+        s.insert("hc");
+        s.insert("iopo");
+        s.insert("atdytq");
+        s.insert("quwdq");
+        s.printInOrder();
+        System.out.println(s.height() + " " + s.size() + " " + s.isEmpty());
     }
 }
