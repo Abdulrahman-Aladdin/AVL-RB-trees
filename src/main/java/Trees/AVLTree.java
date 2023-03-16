@@ -1,16 +1,16 @@
 package Trees;
 
-public class AVLTree {
+public class AVLTree <T extends Comparable<T>> {
     private class Node {
         Node right, left;
-        Double value;
+        T value;
         int height;
 
         Node () {
             this.height = 0;
         }
 
-        Node (Double value) {
+        Node (T value) {
             this.left = nill;
             this.right = nill;
             this.value = value;
@@ -22,14 +22,14 @@ public class AVLTree {
     private Node root = nill;
     private int size = 0;
 
-    private Node insertNode (Node node, double value) {
+    private Node insertNode (Node node, T value) {
         if (node == nill) {
             this.size++;
             return new Node(value);
         }
-        if (node.value > value) {
+        if (value.compareTo(node.value) < 0) {
             node.left = insertNode(node.left, value);
-        } else if (node.value < value) {
+        } else if (value.compareTo(node.value) > 0) {
             node.right = insertNode(node.right, value);
         } else {
             return node;
@@ -72,23 +72,23 @@ public class AVLTree {
         }
     }
 
-    private Node Balance (Node x, double value) {
+    private Node Balance (Node x, T value) {
         int balance = isBalanced(x);
-        if (balance > 1 && value < x.left.value) { // left-left
+        if (balance > 1 && value.compareTo(x.left.value) < 0) { // left-left
             return rotateRight(x);
-        } else if (balance > 1 && value > x.left.value) { // left-right
+        } else if (balance > 1 && value.compareTo(x.left.value) > 0) { // left-right
             x.left = rotateLeft(x.left);
             return rotateRight(x);
-        }else if (balance < -1 && value > x.right.value) { // right-right
+        }else if (balance < -1 && value.compareTo(x.right.value) > 0) { // right-right
             return rotateLeft(x);
-        } else if (balance < -1 && value < x.right.value) { // right-left
+        } else if (balance < -1 && value.compareTo(x.right.value) < 0) { // right-left
             x.right = rotateRight(x.right);
             return rotateLeft(x);
         }
         return x;
     }
 
-    public void insert (Double value) {
+    public void insert (T value) {
         this.root = this.insertNode(this.root, value);
     }
 

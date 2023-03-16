@@ -2,7 +2,7 @@ package Trees;
 
 public class Main {
     public static void main(String[] args) {
-        AVLTree t = new AVLTree();
+        AVLTree<Double> t = new AVLTree();
         System.out.println(t.height() + " " + t.size() + " " + t.isEmpty());
         t.insert(5.0);
         t.PrintInOrder();
