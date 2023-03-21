@@ -1,8 +1,8 @@
- 
+
 package Trees;
 
 
-public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
+public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     private enum Color {
         BLACK, RED
@@ -276,8 +276,6 @@ public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
                 else deleteFixup(dbParent);
                 return;
             }
-
-
         }
 
         // db is right
@@ -291,13 +289,10 @@ public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
                 else deleteFixup(dbParent);
                 return;
             }
-
-
         }
 
-
-        // case 4 : deb sibling is red
-        //db is left
+        // case 4 : db sibling is red
+        // db is left
         if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.rightChild;
 
@@ -307,9 +302,6 @@ public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
                 deleteFixup(db);
                 return;
             }
-
-
-
         }
 
         //db is right
@@ -322,60 +314,60 @@ public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
                 deleteFixup(db);
                 return;
             }
-
-
         }
 
-        // case 5 :
-        if(dbParent.rightChild == db){
+        // case 5 : db sibling is black , near sibling child is red
+        if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
-            Node dbSiblingleft = dbParent.leftChild.leftChild;
-            Node dbSiblingright = dbParent.leftChild.rightChild;
-            if(dbSibling.color == Color.BLACK && dbSiblingleft.color == Color.BLACK && dbSiblingright.color == Color.RED){
+            Node dbSiblingLeft = dbParent.leftChild.leftChild;
+            Node dbSiblingRight = dbParent.leftChild.rightChild;
+
+            if (isBlack(dbSibling) && isBlack(dbSiblingLeft) && isRed(dbSiblingRight)) {
                 dbSibling.color = Color.RED;
-                dbSiblingright.color = Color.BLACK;
+                dbSiblingRight.color = Color.BLACK;
                 rotateLeft(dbSibling);
             }
         }
 
-        if(dbParent.leftChild == db){
+        if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.rightChild;
-            Node dbSiblingleft = dbParent.rightChild.leftChild;
-            Node dbSiblingright = dbParent.rightChild.rightChild;
-            if(dbSibling.color == Color.BLACK && dbSiblingleft.color == Color.RED && dbSiblingright.color == Color.BLACK){
+            Node dbSiblingLeft = dbParent.rightChild.leftChild;
+            Node dbSiblingRight = dbParent.rightChild.rightChild;
+
+            if (isBlack(dbSibling) && isRed(dbSiblingLeft) && isBlack(dbSiblingRight)) {
                 dbSibling.color = Color.RED;
-                dbSiblingleft.color = Color.BLACK;
+                dbSiblingLeft.color = Color.BLACK;
                 rotateRight(dbSibling);
             }
         }
 
-        // case 6 :
-
-        if(dbParent.rightChild == db){
+        // case 6 : db sibling is black , far sibling child is red
+        if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
-            Node dbSiblingleft = dbParent.leftChild.leftChild;
-            Node dbSiblingright = dbParent.leftChild.rightChild;
-            if(dbSibling.color == Color.BLACK && dbSiblingleft.color == Color.RED ){
+            Node dbSiblingLeft = dbParent.leftChild.leftChild;
+            Node dbSiblingRight = dbParent.leftChild.rightChild;
+            if (isBlack(dbSibling) && isRed(dbSiblingLeft)) {
                 Color x = dbParent.color;
                 dbParent.color = dbSibling.color;
                 dbSibling.color = x;
                 rotateRight(dbSibling);
-                dbSiblingleft.color = Color.BLACK;
+                dbSiblingLeft.color = Color.BLACK;
             }
         }
-        if(dbParent.leftChild == db){
+
+        
+        if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.leftChild;
-            Node dbSiblingleft = dbParent.leftChild.leftChild;
-            Node dbSiblingright = dbParent.leftChild.rightChild;
-            if(dbSibling.color == Color.BLACK && dbSiblingright.color == Color.RED ){
+            Node dbSiblingLeft = dbParent.leftChild.leftChild;
+            Node dbSiblingRight = dbParent.leftChild.rightChild;
+            if (isBlack(dbSibling) && isRed(dbSiblingRight)) {
                 Color x = dbParent.color;
                 dbParent.color = dbSibling.color;
                 dbSibling.color = x;
                 rotateLeft(dbSibling);
-                dbSiblingright.color = Color.BLACK;
+                dbSiblingRight.color = Color.BLACK;
             }
         }
-
     }
 
 
@@ -458,6 +450,10 @@ public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
 
     private boolean isBlack(Node node) {
         return node == null || node.color == Color.BLACK;
+    }
+
+    private boolean isRed(Node node) {
+        return node != null && node.color == Color.RED;
     }
 
     private void swapColor(Node firstNode, Node secondNode) {
