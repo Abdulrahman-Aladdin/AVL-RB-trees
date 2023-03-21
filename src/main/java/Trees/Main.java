@@ -15,6 +15,12 @@ public class Main {
         t.insert(0.0);
         t.printInOrder();
         System.out.println(t.getHeight() + " " + t.size() + " " + t.isEmpty());
+
+        t.delete(1.0);
+        System.out.println();
+        t.printInOrder();
+        System.out.println(t.getHeight() + " " + t.size() + " " + t.isEmpty());
+
         AVLTree<String> s = new AVLTree();
         System.out.println(s.getHeight() + " " + s.size() + " " + s.isEmpty());
         s.insert("hbj");

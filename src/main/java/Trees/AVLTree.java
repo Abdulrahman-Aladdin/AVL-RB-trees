@@ -74,9 +74,6 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         }
         return current;
     }
-
-
-
     private int height(Node node) {
         if (node == nill) {
             return 0;
@@ -124,23 +121,26 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         if (this.root == nill) {
             return false;
         }
-
-        boolean found = false;
-        this.root = delete(this.root, value, found);
-        return found;
+        if(!search(value)) {
+            return false;
+        }
+        this.root = deleteNode(this.root, value);
+        this.size--;
+        return true;
     }
 
-    private Node delete(Node node,T value, boolean found) {
+    private Node deleteNode(Node node, T value) {
         if (node == nill) {
             return nill;
         }
 
         if (value.compareTo(node.value) < 0) {
-            node.left = delete(node.left, value, found);
-        } else if (value.compareTo(node.value) > 0) {
-            node.right = delete(node.right, value, found);
-        } else {
-            found = true;
+            node.left = deleteNode(node.left, value);
+        }
+        else if (value.compareTo(node.value) > 0) {
+            node.right = deleteNode(node.right, value);
+        }
+        else {
             if (node.left == nill || node.right == nill) {
                 Node temp = nill;
                 if (temp == node.left) {
@@ -148,17 +148,12 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
                 } else {
                     temp = node.left;
                 }
-
-                if (temp == nill) {
-                    node = nill;
-                } else {
-                    node = temp;
-                }
+                node = temp;
             }
             else {
                 Node temp = minValueNode(node.right);
                 node.value = temp.value;
-                node.right = delete(node.right, temp.value, found);
+                node.right = deleteNode(node.right, temp.value);
             }
         }
 
@@ -190,8 +185,20 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         return node;
     }
 
-    public T search(T value) {
-        return (T) nill;
+    public boolean search(T value) {
+        Node currentNode = this.root;
+
+        while (currentNode != nill) {
+            if (value.compareTo(currentNode.value) == 0) {
+                return true;
+            } else if (value.compareTo(currentNode.value) < 0) {
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+
+        return false;
     }
 
     public int getHeight() {
