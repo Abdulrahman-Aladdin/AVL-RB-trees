@@ -13,6 +13,7 @@ public class BatchInsertCommand extends AbstractCommand<Void>{
     @Override
     public Void execute(String ignored) {
 
+        System.out.print("Enter the path : ");
         Pair<Integer,Integer> output = dictionary.batchInsert(scanner.next());
 
         if (output == null){
