@@ -1,6 +1,6 @@
 package Trees;
 
-public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
+public class AVLTree<T extends Comparable<T>> implements IBST<T> {
     private class Node {
         Node right, left;
         T value;
@@ -74,12 +74,15 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         }
         return current;
     }
+
     private int height(Node node) {
         if (node == nill) {
             return 0;
         }
         return node.height;
     }
+
+
     private void inOrder (Node x) {
         if (x != nill) {
             inOrder(x.left);
@@ -188,8 +191,9 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         return false;
     }
 
-    public int getHeight() {
-        return this.root.height;
+    @Override
+    public int height() {
+        return height(this.root);
     }
 
     public void printInOrder () {

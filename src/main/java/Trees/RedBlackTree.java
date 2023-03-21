@@ -2,9 +2,7 @@
 package Trees;
 
 
-
- 
-public class RedBlackTree <T extends Comparable<T>>  {
+public class RedBlackTree <T extends Comparable<T>> implements IBST<T> {
 
     private enum Color {
         BLACK, RED
