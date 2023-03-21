@@ -35,7 +35,7 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
             return node;
         }
         updateHeight(node);
-        return Balance(node, value);
+        return Balance(node);
     }
 
     private Node rotateRight (Node x) {
@@ -88,24 +88,33 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         }
     }
 
-    private Node Balance (Node x, T value) {
-        int balance = getBalanceFactor(x);
-        if (balance > 1 && value.compareTo(x.left.value) < 0) { // left-left
-            return rotateRight(x);
-        } else if (balance > 1 && value.compareTo(x.left.value) > 0) { // left-right
-            x.left = rotateLeft(x.left);
-            return rotateRight(x);
-        }else if (balance < -1 && value.compareTo(x.right.value) > 0) { // right-right
-            return rotateLeft(x);
-        } else if (balance < -1 && value.compareTo(x.right.value) < 0) { // right-left
-            x.right = rotateRight(x.right);
-            return rotateLeft(x);
+    private Node Balance (Node node) {
+        int balance = getBalanceFactor(node);
+
+        if (balance > 1 && getBalanceFactor(node.left) >= 0) { // left-left
+            return rotateRight(node);
         }
-        return x;
+
+        if (balance > 1 && getBalanceFactor(node.left) < 0) {
+            node.left = rotateLeft(node.left);
+            return rotateRight(node);
+        }
+
+        if (balance < -1 && getBalanceFactor(node.right) <= 0) {
+            return rotateLeft(node);
+        }
+
+        if (balance < -1 && getBalanceFactor(node.right) > 0) {
+            node.right = rotateRight(node.right);
+            return rotateLeft(node);
+        }
+        return node;
     }
 
-    public void insert (T value) {
+    public boolean insert (T value) {
+        int sz = this.size;
         this.root = this.insertNode(this.root, value);
+        return this.size > sz;
     }
 
     public int size () {
@@ -162,32 +171,11 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
         }
 
         updateHeight(node);
-        int balance = getBalanceFactor(node);
-
-        if (balance > 1 && getBalanceFactor(node.left) >= 0) {
-            return rotateRight(node);
-        }
-
-        if (balance > 1 && getBalanceFactor(node.left) < 0) {
-            node.left = rotateLeft(node.left);
-            return rotateRight(node);
-        }
-
-        if (balance < -1 && getBalanceFactor(node.right) <= 0) {
-            return rotateLeft(node);
-        }
-
-        if (balance < -1 && getBalanceFactor(node.right) > 0) {
-            node.right = rotateRight(node.right);
-            return rotateLeft(node);
-        }
-
-        return node;
+        return Balance(node);
     }
 
     public boolean search(T value) {
         Node currentNode = this.root;
-
         while (currentNode != nill) {
             if (value.compareTo(currentNode.value) == 0) {
                 return true;
@@ -197,7 +185,6 @@ public class AVLTree<T extends Comparable<T>> implements AVLTreeInterface<T> {
                 currentNode = currentNode.right;
             }
         }
-
         return false;
     }
 

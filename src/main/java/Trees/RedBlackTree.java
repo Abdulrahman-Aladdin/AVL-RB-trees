@@ -4,7 +4,7 @@ package Trees;
 
 
  
-public class RedBlackTree<T extends Comparable<T>>  {
+public class RedBlackTree <T extends Comparable<T>>  {
 
     private enum Color {
         BLACK, RED

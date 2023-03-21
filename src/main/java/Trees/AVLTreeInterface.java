@@ -7,7 +7,7 @@ public interface AVLTreeInterface <T extends Comparable<T>>{
      * @param value the value which want to insert
      * @return true if the value was found and insert, false otherwise
      */
-    void insert (T value);
+    boolean insert (T value);
 
     /**
      * Removes the value from the AVL tree.
