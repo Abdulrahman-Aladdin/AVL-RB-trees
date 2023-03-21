@@ -14,4 +14,6 @@ public interface IDictionary {
     int size();
     int treeHeight();
 
+    void printDictionary();
+
 }

@@ -86,7 +86,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
     }
 
-
     Node root, nil;
     int size = 0;
 
@@ -316,6 +315,8 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             }
         }
 
+
+
         // case 5 : db sibling is black , near sibling child is red
         if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
@@ -341,6 +342,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             }
         }
 
+
         // case 6 : db sibling is black , far sibling child is red
         if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
@@ -355,7 +357,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             }
         }
 
-        
         if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.leftChild;
             Node dbSiblingLeft = dbParent.leftChild.leftChild;
@@ -400,7 +401,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     public int size() {
         return 0;
     }
-
 
     public int height() {
         return heightHelper(root);
@@ -460,5 +460,18 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         Color temp = firstNode.color;
         firstNode.color = secondNode.color;
         secondNode.color = temp;
+    }
+
+    private void inOrder (Node x) {
+        if (x != null) {
+            inOrder(x.leftChild);
+            System.out.print(x.value + " " + x.color + " ");
+            inOrder(x.rightChild);
+        }
+    }
+
+    public void printInOrder () {
+        inOrder (this.root);
+        System.out.println();
     }
 }

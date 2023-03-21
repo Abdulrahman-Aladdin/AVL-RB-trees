@@ -21,6 +21,7 @@ public class DeleteCommand extends AbstractCommand<Void>{
         else
             System.out.println("Error , word doesn't exist");
 
+        dictionary.printDictionary();
         return null;
     }
 }

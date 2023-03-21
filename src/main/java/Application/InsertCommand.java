@@ -19,6 +19,8 @@ public class InsertCommand extends AbstractCommand<Void>{
         else
             System.out.println("Error , word already exist");
 
+
+        dictionary.printDictionary();
         return null;
     }
 }

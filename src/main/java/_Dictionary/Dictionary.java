@@ -92,4 +92,8 @@ public class Dictionary implements IDictionary {
     public int treeHeight() {
         return tree.height();
     }
+
+    public void printDictionary(){
+        tree.printInOrder();
+    }
 }

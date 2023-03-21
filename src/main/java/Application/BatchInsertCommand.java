@@ -14,6 +14,7 @@ public class BatchInsertCommand extends AbstractCommand<Void>{
     public Void execute(String ignored) {
 
         System.out.print("Enter the path : ");
+
         Pair<Integer,Integer> output = dictionary.batchInsert(scanner.next());
 
         if (output == null){
@@ -24,6 +25,7 @@ public class BatchInsertCommand extends AbstractCommand<Void>{
         System.out.println("Number of words inserted = " + output.getLeft());
         System.out.println("Number of words existing = " + output.getRight());
 
+        dictionary.printDictionary();
         return null;
     }
 }

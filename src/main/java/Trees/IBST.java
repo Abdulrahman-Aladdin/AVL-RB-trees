@@ -11,4 +11,6 @@ public interface IBST<T extends Comparable<T>> {
     int size();
 
     int height();
+
+    void printInOrder();
 }

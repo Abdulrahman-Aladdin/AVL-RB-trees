@@ -19,6 +19,7 @@ public class SearchCommand extends AbstractCommand<Void>{
         else
             System.out.println("Word not found");
 
+
         return null;
     }
 }

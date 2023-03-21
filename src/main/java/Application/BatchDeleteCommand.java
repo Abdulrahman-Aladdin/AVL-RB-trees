@@ -24,6 +24,7 @@ public class BatchDeleteCommand extends AbstractCommand<Void>{
         System.out.println("Number of words deleted = " + output.getLeft());
         System.out.println("Number of words existing = " + output.getRight());
 
+        dictionary.printDictionary();
         return null;
     }
 }
