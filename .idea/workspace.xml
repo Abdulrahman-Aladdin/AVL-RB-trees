@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="done errors in insert in RB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application/BatchDeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/BatchDeleteCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application/BatchInsertCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/BatchInsertCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application/DeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/DeleteCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application/InsertCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/InsertCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Application/SearchCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/SearchCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Trees/IBST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/IBST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree$Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree$Color.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree$Node.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/_Dictionary/Dictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/_Dictionary/Dictionary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/_Dictionary/IDictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/_Dictionary/IDictionary.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679355305206</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="done errors in insert in RB">
+      <created>1679443582905</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679443582905</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implements delete in AVL and the interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="implements delete in AVL and the interface" />
+    <MESSAGE value="done errors in insert in RB" />
+    <option name="LAST_COMMIT_MESSAGE" value="done errors in insert in RB" />
   </component>
 </project>
