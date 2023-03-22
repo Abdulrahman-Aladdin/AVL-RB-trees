@@ -31,6 +31,7 @@ public class CLI implements Runnable {
         System.out.println("5- BatchDelete");
         System.out.println("6- Size");
         System.out.println("7- TreeHeight");
+        System.out.println("8- Exit");
         System.out.print("Enter your choice : ");
     }
 
