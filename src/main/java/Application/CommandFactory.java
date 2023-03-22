@@ -13,6 +13,7 @@ public class CommandFactory {
             case BATCH_DELETE -> new BatchDeleteCommand(dictionary);
             case GET_HEIGHT -> new GetDictionaryHeightCommand(dictionary);
             case GET_SIZE -> new GetDictionarySizeCommand(dictionary);
+            case EXIT -> new ExitCommand();
             default -> null;
         };
     }

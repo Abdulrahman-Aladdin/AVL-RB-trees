@@ -9,6 +9,8 @@ public abstract class AbstractCommand<T> {
     IDictionary dictionary;
     Scanner scanner;
 
+    public AbstractCommand () {}
+
     public AbstractCommand(IDictionary dictionary){
         this.dictionary = dictionary;
         this.scanner = new Scanner(System.in);

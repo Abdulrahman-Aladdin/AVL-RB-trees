@@ -6,33 +6,35 @@ import _Dictionary.Dictionary;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static java.lang.System.*;
+
 public class CLI implements Runnable {
 
     Dictionary dictionary;
     Scanner scanner;
 
     public CLI() {
-        scanner = new Scanner(System.in);
+        scanner = new Scanner(in);
     }
 
     private void showMenu_1() {
-        System.out.println("Choose dictionary backend tree:");
-        System.out.println("1- AVL");
-        System.out.println("2- RedBlack");
-        System.out.print("Enter your choice : ");
+        out.println("Choose dictionary backend tree:");
+        out.println("1- AVL");
+        out.println("2- RedBlack");
+        out.print("Enter your choice : ");
     }
 
     private void showMenu_2(){
-        System.out.println("Choose an operation:");
-        System.out.println("1- Insert");
-        System.out.println("2- Delete");
-        System.out.println("3- Search");
-        System.out.println("4- BatchInsert");
-        System.out.println("5- BatchDelete");
-        System.out.println("6- Size");
-        System.out.println("7- TreeHeight");
-        System.out.println("8- Exit");
-        System.out.print("Enter your choice : ");
+        out.println("Choose an operation:");
+        out.println("1- Insert");
+        out.println("2- Delete");
+        out.println("3- Search");
+        out.println("4- BatchInsert");
+        out.println("5- BatchDelete");
+        out.println("6- Size");
+        out.println("7- TreeHeight");
+        out.println("8- Exit");
+        out.print("Enter your choice : ");
     }
 
     @Override
@@ -44,7 +46,7 @@ public class CLI implements Runnable {
 
             if (dictionary == null){
                 clearScreen();
-                System.out.println("Enter a valid option");
+                out.println("Enter a valid option");
             } else break;
         }
 
@@ -56,7 +58,7 @@ public class CLI implements Runnable {
 
             if (command == null){
                 clearScreen();
-                System.out.println("Enter a valid option");
+                out.println("Enter a valid option");
                 continue;
             }
 
@@ -66,7 +68,7 @@ public class CLI implements Runnable {
 
     private void clearScreen() {
         try {
-            if (System.getProperty("os.name").contains("Windows"))
+            if (getProperty("os.name").contains("Windows"))
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             else
                 Runtime.getRuntime().exec("clear");
@@ -83,6 +85,7 @@ public class CLI implements Runnable {
             case "5" -> CommandFactory.getCommand(Commands.BATCH_DELETE,dictionary);
             case "6" -> CommandFactory.getCommand(Commands.GET_SIZE,dictionary);
             case "7" -> CommandFactory.getCommand(Commands.GET_HEIGHT,dictionary);
+            case "8" -> CommandFactory.getCommand(Commands.EXIT,dictionary);
             default -> null;
         };
     }
