@@ -170,7 +170,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
             temp = rotateLeft(grandparent);
-
             if(!(temp == root)){
                 if(isLeft){
                     temp.parent.leftChild =  temp;
@@ -178,6 +177,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
+
             root.parent =null;
         } else if (parent.getLeftChild() == node && grandparent.getLeftChild() == parent) {
             grandparent.setColor(Color.RED);
@@ -190,6 +190,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
+
             root.parent =null;
         } else if (parent.getLeftChild() == node && grandparent.getRightChild() == parent) {
             temp = rotateRight(parent);
@@ -441,13 +442,15 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     private Node rotateRight(Node node) {
         Node x = node.leftChild;
         Node y = x.rightChild;
+        Node par2 = node.parent;
         x.rightChild = node;
         node.leftChild = y;
         boolean par = false;
-        if(node.parent == root){
+        if(node.parent == null){
             par = true;
         }
         node.parent = x;
+        x.parent = par2;
         if (y != null) y.parent = node;
         if(par){
             this.root = x ;
@@ -458,12 +461,14 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     private Node rotateLeft(Node node) {
         Node x = node.rightChild;
         Node y = x.leftChild;
+        Node par2 = node.parent;
         x.leftChild = node;
         node.rightChild = y;
         boolean par = false;
-        if(node.parent == root){
+        if(node.parent == null){
             par = true;
         }
+        x.parent = par2;
         node.parent = x;
         if (y != null) y.parent = node;
         if (true){

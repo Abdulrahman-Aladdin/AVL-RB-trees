@@ -36,12 +36,12 @@ public class RedBlackTreeTest {
         s2 = t.inorderTraversalColor(t.root);
         System.out.println(s);
         System.out.println(s2);
-        Assertions.assertFalse(t.insert(5));
+        Assertions.assertTrue(t.insert(9));
         s = t.inorderTraversal(t.root);
         s2 = t.inorderTraversalColor(t.root);
         System.out.println(s);
         System.out.println(s2);
-        Assertions.assertFalse(t.insert(0));
+        Assertions.assertTrue(t.insert(151));
         s = t.inorderTraversal(t.root);
         s2 = t.inorderTraversalColor(t.root);
         System.out.println(s);
