@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="implements delete in AVL and the interface">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/CLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679348632059</updated>
       <workItem from="1679348635567" duration="9144000" />
-      <workItem from="1679477656160" duration="1451000" />
+      <workItem from="1679477656160" duration="2396000" />
     </task>
     <task id="LOCAL-00001" summary="implements delete in AVL and the interface">
       <created>1679355305206</created>

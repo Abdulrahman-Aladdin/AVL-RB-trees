@@ -427,7 +427,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
 
     public int size() {
-        return 0;
+        return this.size;
     }
 
     public int height() {
@@ -467,7 +467,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
         node.parent = x;
         if (y != null) y.parent = node;
-        if(true){
+        if (true){
             this.root = x ;
         }
         return x;
