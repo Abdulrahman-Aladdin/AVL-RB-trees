@@ -2,13 +2,6 @@
 package Trees;
 
 
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
-
 public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     private enum Color {
@@ -105,12 +98,16 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     public boolean insert(T value) {
         Node node = new Node(Color.RED, value);
         Node current = this.root, current2 = null;
+
         if(search(value)){
             return false;
         }
+
+
         if (current == null) {
             this.root = node;
             this.root.setColor(Color.BLACK);
+            size++;
             return true;
         }
 
@@ -153,9 +150,9 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         if (uncle != null && uncle.getColor() == Color.RED) {
             uncle.setColor(Color.BLACK);
             parent.setColor(Color.BLACK);
+
             //We then check if the grandparent is not root to recolor it
-            //System.out.println(grandparent.parent.leftChild.color);
-            if (grandparent!= root) {
+            if (grandparent.getParent() != null) {
                 grandparent.setColor(Color.RED);
                 insertFixup(grandparent);
             }
@@ -180,7 +177,8 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
-            root.parent =null;
+
+
         } else if (parent.getLeftChild() == node && grandparent.getLeftChild() == parent) {
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
@@ -192,7 +190,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
-            root.parent =null;
         } else if (parent.getLeftChild() == node && grandparent.getRightChild() == parent) {
             temp = rotateRight(parent);
             grandparent.setRightChild(temp);
@@ -206,7 +203,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
-            root.parent =null;
         } else if (parent.getRightChild() == node && grandparent.getLeftChild() == parent) {
             temp = rotateLeft(parent);
             grandparent.setRightChild(temp);
@@ -220,7 +216,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                     temp.parent.rightChild=  temp;
                 }
             }
-            root.parent =null;
         }
 
     }
@@ -431,7 +426,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
 
     public int size() {
-        return 0;
+        return this.size;
     }
 
     public int height() {
@@ -471,7 +466,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
         node.parent = x;
         if (y != null) y.parent = node;
-        if(true){
+        if(par){
             this.root = x ;
         }
         return x;
@@ -508,48 +503,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         secondNode.color = temp;
     }
 
-    public List<T> inorderTraversal(Node root) {
-        List<T> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-        Stack<Node> stack = new Stack<>();
-        Node node = root;
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                node = node.leftChild;
-            }
-            node = stack.pop();
-            result.add(node.value );
-            node = node.rightChild;
-        }
-        return result;
-    }
-
-    public List<String> inorderTraversalColor(Node root) {
-        List<String> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-        Stack<Node> stack = new Stack<>();
-        Node node = root;
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                node = node.leftChild;
-            }
-            node = stack.pop();
-
-            if(node.color == Color.BLACK)
-                result.add("Black");
-            else{
-                result.add("Red");
-            }
-            node = node.rightChild;
-        }
-        return result;
-    }
     private void inOrder (Node x) {
         if (x != null) {
             inOrder(x.leftChild);
@@ -560,6 +513,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     public void printInOrder () {
         inOrder (this.root);
-        System.out.println();
+        if (size != 0) System.out.println();
     }
 }
