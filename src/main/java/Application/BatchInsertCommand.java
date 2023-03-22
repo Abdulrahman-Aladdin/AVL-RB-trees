@@ -15,7 +15,7 @@ public class BatchInsertCommand extends AbstractCommand<Void>{
 
         System.out.print("Enter the path : ");
 
-        Pair<Integer,Integer> output = dictionary.batchInsert(scanner.next());
+        Pair<Integer,Integer> output = dictionary.batchInsert(scanner.nextLine());
 
         if (output == null){
             System.out.println("File not found");

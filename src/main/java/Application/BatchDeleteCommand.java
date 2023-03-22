@@ -14,7 +14,7 @@ public class BatchDeleteCommand extends AbstractCommand<Void>{
 
         System.out.print("Enter the path : ");
 
-        Pair<Integer,Integer> output = dictionary.batchDelete(scanner.next());
+        Pair<Integer,Integer> output = dictionary.batchDelete(scanner.nextLine());
 
         if (output == null){
             System.out.println("File not found");

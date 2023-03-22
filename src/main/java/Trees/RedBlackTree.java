@@ -1,6 +1,6 @@
 package Trees;
 
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
-    private enum Color {
+    public enum Color {
         BLACK, RED
     }
 
@@ -232,17 +232,39 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
 
         Node dbNode;
-        Color deletedNodeColor;
+        Color deletedNodeColor = null;
 
         if (node.leftChild == null || node.rightChild == null) {
             dbNode = deleteNodeWithZeroOrOneChild(node);
-            deletedNodeColor = node.color;
+
+            if (isBlack(node) && isRed(dbNode)){
+                dbNode.color = Color.BLACK;
+                deletedNodeColor = Color.RED;
+            } else if (isRed(node) && dbNode != null &&isBlack(dbNode)){
+                deletedNodeColor = Color.RED;
+            } else if (isBlack(node) && dbNode != null && isBlack(dbNode)){
+                deletedNodeColor = Color.BLACK;
+            } else if (dbNode == null){
+                deletedNodeColor = Color.RED;
+            }
+
+
         } else {
-            Node inOrderSuccessor = findMinimum(node);
+            Node inOrderSuccessor = findMaximum(node.leftChild);
             node.value = inOrderSuccessor.value;
 
             dbNode = deleteNodeWithZeroOrOneChild(inOrderSuccessor);
-            deletedNodeColor = inOrderSuccessor.color;
+
+            if (isBlack(inOrderSuccessor) && isRed(dbNode)){
+                dbNode.color = Color.BLACK;
+                deletedNodeColor = Color.RED;
+            } else if (isRed(inOrderSuccessor) && dbNode != null &&isBlack(dbNode)){
+                deletedNodeColor = Color.RED;
+            } else if (isBlack(inOrderSuccessor) && dbNode != null && isBlack(dbNode)){
+                deletedNodeColor = Color.BLACK;
+            } else if (dbNode == null){
+                deletedNodeColor = Color.RED;
+            }
         }
 
         // case 1 (red leaf node) is handled since it goes
@@ -288,6 +310,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
         Node dbParent = db.parent;
 
+
         // case 2 : dbNode is root
         if (db == root) {
             db.color = Color.BLACK;
@@ -321,14 +344,16 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             }
         }
 
+
         // case 4 : db sibling is red
+
         // db is left
         if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.rightChild;
 
             if (dbSibling.color == Color.RED) {
                 swapColor(dbSibling, dbParent);
-                rotateLeft(dbParent);
+                rotateLeftAndAdjustParent(dbParent);
                 deleteFixup(db);
                 return;
             }
@@ -340,7 +365,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
             if (dbSibling.color == Color.RED) {
                 swapColor(dbSibling, dbParent);
-                rotateRight(dbParent);
+                rotateRightAndAdjustParent(dbParent);
                 deleteFixup(db);
                 return;
             }
@@ -349,27 +374,29 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
 
         // case 5 : db sibling is black , near sibling child is red
+        // db is right
         if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
-            Node dbSiblingLeft = dbParent.leftChild.leftChild;
-            Node dbSiblingRight = dbParent.leftChild.rightChild;
+            Node dbSiblingLeft = dbSibling.leftChild;
+            Node dbSiblingRight = dbSibling.rightChild;
 
             if (isBlack(dbSibling) && isBlack(dbSiblingLeft) && isRed(dbSiblingRight)) {
                 dbSibling.color = Color.RED;
                 dbSiblingRight.color = Color.BLACK;
-                rotateLeft(dbSibling);
+                rotateLeftAndAdjustParent(dbSibling);
             }
         }
 
+        // db is left
         if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.rightChild;
-            Node dbSiblingLeft = dbParent.rightChild.leftChild;
-            Node dbSiblingRight = dbParent.rightChild.rightChild;
+            Node dbSiblingLeft = dbSibling.leftChild;
+            Node dbSiblingRight = dbSibling.rightChild;
 
             if (isBlack(dbSibling) && isRed(dbSiblingLeft) && isBlack(dbSiblingRight)) {
                 dbSibling.color = Color.RED;
                 dbSiblingLeft.color = Color.BLACK;
-                rotateRight(dbSibling);
+                rotateRightAndAdjustParent(dbSibling);
             }
         }
 
@@ -377,26 +404,22 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         // case 6 : db sibling is black , far sibling child is red
         if (dbParent.rightChild == db) {
             Node dbSibling = dbParent.leftChild;
-            Node dbSiblingLeft = dbParent.leftChild.leftChild;
-            Node dbSiblingRight = dbParent.leftChild.rightChild;
+            Node dbSiblingLeft = dbSibling.leftChild;
+            Node dbSiblingRight = dbSibling.rightChild;
             if (isBlack(dbSibling) && isRed(dbSiblingLeft)) {
-                Color x = dbParent.color;
-                dbParent.color = dbSibling.color;
-                dbSibling.color = x;
-                rotateRight(dbSibling);
+                swapColor(dbSibling,dbParent);
+                rotateRightAndAdjustParent(dbParent);
                 dbSiblingLeft.color = Color.BLACK;
             }
         }
 
         if (dbParent.leftChild == db) {
-            Node dbSibling = dbParent.leftChild;
-            Node dbSiblingLeft = dbParent.leftChild.leftChild;
-            Node dbSiblingRight = dbParent.leftChild.rightChild;
+            Node dbSibling = dbParent.rightChild;
+            Node dbSiblingLeft = dbSibling.leftChild;
+            Node dbSiblingRight = dbSibling.rightChild;
             if (isBlack(dbSibling) && isRed(dbSiblingRight)) {
-                Color x = dbParent.color;
-                dbParent.color = dbSibling.color;
-                dbSibling.color = x;
-                rotateLeft(dbSibling);
+                swapColor(dbSibling,dbParent);
+                rotateLeftAndAdjustParent(dbParent);
                 dbSiblingRight.color = Color.BLACK;
             }
         }
@@ -404,8 +427,16 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     private Node findMinimum(Node node) {
         Node temp = node;
-        while (node.leftChild != null) {
+        while (temp.leftChild != null) {
             temp = temp.leftChild;
+        }
+        return temp;
+    }
+
+    private Node findMaximum(Node node) {
+        Node temp = node;
+        while (temp.rightChild != null) {
+            temp = temp.rightChild;
         }
         return temp;
     }
@@ -471,7 +502,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         x.parent = par2;
         node.parent = x;
         if (y != null) y.parent = node;
-        if (true){
+        if (par){
             this.root = x ;
         }
         return x;
@@ -549,16 +580,16 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         return result;
     }
 
-    public List<Pair<T,Color>> inOrderArray(){
-        List<Pair<T,Color>> array = new ArrayList<>();
+    public List<Triple<T, Color, Integer>> inOrderArray(){
+        List<Triple<T,Color,Integer>> array = new ArrayList<>();
         inOrderArrayHelper(this.root,array);
         return array;
     }
 
-    private void inOrderArrayHelper(Node x,List<Pair<T,Color>> array){
+    private void inOrderArrayHelper(Node x,List<Triple<T,Color,Integer>> array){
         if (x != null) {
             inOrder(x.leftChild);
-            array.add(Pair.of(x.value,x.color));
+            array.add(Triple.of(x.value,x.color,heightHelper(x)));
             inOrder(x.rightChild);
         }
     }
@@ -566,7 +597,8 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     private void inOrder (Node x) {
         if (x != null) {
             inOrder(x.leftChild);
-            System.out.print(x.value + " " + x.color + " ");
+            int h= heightHelper(x);
+            System.out.print(x.value + " " + x.color + " " + heightHelper(x) + " ");
             inOrder(x.rightChild);
         }
     }
@@ -574,5 +606,35 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     public void printInOrder () {
         inOrder (this.root);
         if (size != 0) System.out.println();
+    }
+
+    private void rotateLeftAndAdjustParent(Node node) {
+        Node parent = node.parent;
+        Node rightChild = node.rightChild;
+
+        node.rightChild = rightChild.leftChild;
+        if (rightChild.leftChild != null) {
+            rightChild.leftChild.parent = node;
+        }
+
+        rightChild.leftChild = node;
+        node.parent = rightChild;
+
+        replaceParentsChild(parent, node, rightChild);
+    }
+
+    private void rotateRightAndAdjustParent(Node node) {
+        Node parent = node.parent;
+        Node leftChild = node.leftChild;
+
+        node.leftChild = leftChild.rightChild;
+        if (leftChild.rightChild != null) {
+            leftChild.rightChild.parent = node;
+        }
+
+        leftChild.rightChild = node;
+        node.parent = leftChild;
+
+        replaceParentsChild(parent, node, leftChild);
     }
 }
