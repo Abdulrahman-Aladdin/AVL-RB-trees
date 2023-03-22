@@ -4,11 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="implements delete in AVL and the interface">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Trees/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/AVLTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Trees/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/Main.java" afterDir="false" />
+    <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Application/BatchDeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/BatchDeleteCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Application/BatchInsertCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/BatchInsertCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Application/DeleteCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/DeleteCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Application/InsertCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/InsertCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Application/SearchCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application/SearchCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Trees/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Trees/IBST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/IBST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/_Dictionary/Dictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/_Dictionary/Dictionary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/_Dictionary/IDictionary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/_Dictionary/IDictionary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +50,21 @@
     </option>
   </component>
   <component name="ProjectId" id="2NIPTAU8kbLok5jhfWvgklOoXcT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="JUnit.RedBlackTreeTest.Test1">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Trees.Main" />
       <module name="AVL-Red-Black-trees" />
@@ -62,8 +78,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RedBlackTreeTest.Test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-Red-Black-trees" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Trees.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Trees" />
+      <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
+      <option name="METHOD_NAME" value="Test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RedBlackTreeTest.Test1" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

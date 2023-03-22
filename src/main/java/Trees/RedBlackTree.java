@@ -97,46 +97,52 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     public boolean insert(T value) {
         Node node = new Node(Color.RED, value);
-        Node current = this.root;
+        Node current = this.root, current2 = null;
+        if(search(value)){
+            return false;
+        }
         if (current == null) {
             this.root = node;
             this.root.setColor(Color.BLACK);
             return true;
         }
 
-        while (true) {
+        while (current != null) {
+            current2 = current;
             if (current.getValue().compareTo(value) > 0) {
-                if (current.getLeftChild() == null) {
-                    current.setLeftChild(node);
-                    node.setParent(current);
-                    break;
-                } else {
                     current = current.getLeftChild();
-                }
+
             } else if (current.getValue().compareTo(value) < 0) {
-                if (current.getRightChild() == null) {
-                    current.setRightChild(node);
-                    node.setParent(current);
-                    break;
-                } else {
                     current = current.getRightChild();
-                }
             } else {
                 return false;
             }
         }
+        if (current2.getValue().compareTo(value) > 0)
+        {
+            current2.leftChild = node;
+            node.parent = current2;
+        }
+        else
+        {
+            current2.rightChild =node;
+            node.parent = current2;
+        }
         size++;
         insertFixup(node);
+
         return true;
     }
 
     private void insertFixup(Node node) {
+
         if (node.getParent().getColor() == Color.BLACK) {
             return;
         }
         Node parent = node.getParent();
         Node uncle = node.getUncle();
         Node grandparent = node.getParent().getParent();
+
         if (uncle != null && uncle.getColor() == Color.RED) {
             uncle.setColor(Color.BLACK);
             parent.setColor(Color.BLACK);
@@ -148,49 +154,66 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             }
             return;
         }
-
+        boolean isLeft = false;
+        if(! (grandparent == this.root) && grandparent.leftChild == parent )
+        {
+            isLeft = true;
+        }
+        Node temp ;
         if (parent.getRightChild() == node && grandparent.getRightChild() == parent) {
+
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
-            Node temp = rotateLeft(grandparent);
-            if (temp.getValue().compareTo(temp.getParent().getValue()) < 0) {
-                temp.getParent().setLeftChild(temp);
-            } else {
-                temp.getParent().setRightChild(temp);
+            temp = rotateLeft(grandparent);
+
+            if(!(temp == root)){
+                if(isLeft){
+                    temp.parent.leftChild =  temp;
+                }else{
+                    temp.parent.rightChild=  temp;
+                }
             }
+
 
         } else if (parent.getLeftChild() == node && grandparent.getLeftChild() == parent) {
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
-            Node temp = rotateRight(grandparent);
-            if (temp.getValue().compareTo(temp.getParent().getValue()) < 0) {
-                temp.getParent().setLeftChild(temp);
-            } else {
-                temp.getParent().setRightChild(temp);
+            temp = rotateRight(grandparent);
+            if(!(temp == root)){
+                if(isLeft){
+                    temp.parent.leftChild =  temp;
+                }else{
+                    temp.parent.rightChild=  temp;
+                }
             }
         } else if (parent.getLeftChild() == node && grandparent.getRightChild() == parent) {
-            Node temp = rotateRight(parent);
+            temp = rotateRight(parent);
             grandparent.setRightChild(temp);
             grandparent.setColor(Color.RED);
             temp.setColor(Color.BLACK);
             temp = rotateLeft(grandparent);
-            if (temp.getValue().compareTo(temp.getParent().getValue()) < 0) {
-                temp.getParent().setLeftChild(temp);
-            } else {
-                temp.getParent().setRightChild(temp);
+            if(!(temp == root)){
+                if(isLeft){
+                    temp.parent.leftChild =  temp;
+                }else{
+                    temp.parent.rightChild=  temp;
+                }
             }
         } else if (parent.getRightChild() == node && grandparent.getLeftChild() == parent) {
-            Node temp = rotateLeft(parent);
+            temp = rotateLeft(parent);
             grandparent.setRightChild(temp);
             grandparent.setColor(Color.RED);
             temp.setColor(Color.BLACK);
             temp = rotateRight(grandparent);
-            if (temp.getValue().compareTo(temp.getParent().getValue()) < 0) {
-                temp.getParent().setLeftChild(temp);
-            } else {
-                temp.getParent().setRightChild(temp);
+            if(!(temp == root)){
+                if(isLeft){
+                    temp.parent.leftChild =  temp;
+                }else{
+                    temp.parent.rightChild=  temp;
+                }
             }
         }
+
     }
 
 
@@ -416,8 +439,15 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         Node y = x.rightChild;
         x.rightChild = node;
         node.leftChild = y;
+        boolean par = false;
+        if(node.parent == root){
+            par = true;
+        }
         node.parent = x;
         if (y != null) y.parent = node;
+        if(par){
+            this.root = x ;
+        }
         return x;
     }
 
@@ -426,8 +456,15 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         Node y = x.leftChild;
         x.leftChild = node;
         node.rightChild = y;
+        boolean par = false;
+        if(node.parent == root){
+            par = true;
+        }
         node.parent = x;
         if (y != null) y.parent = node;
+        if(true){
+            this.root = x ;
+        }
         return x;
     }
 
