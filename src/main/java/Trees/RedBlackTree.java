@@ -1,5 +1,7 @@
 package Trees;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -292,7 +294,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
 
         // case 3 : db sibling is black , sibling children are black (2 times for mirroring)
-        //db is left
+        // db is left
         if (dbParent.leftChild == db) {
             Node dbSibling = dbParent.rightChild;
 
@@ -399,7 +401,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
     }
 
-
     private Node findMinimum(Node node) {
         Node temp = node;
         while (node.leftChild != null) {
@@ -407,7 +408,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
         return temp;
     }
-
 
     public boolean search(T value) {
         return search(value, root) != null;
@@ -424,7 +424,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             return search(value, root.getLeftChild());
         }
     }
-
 
     public int size() {
         return this.size;
@@ -489,7 +488,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
     }
 
-
     private boolean isBlack(Node node) {
         return node == null || node.color == Color.BLACK;
     }
@@ -517,12 +515,11 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                 node = node.leftChild;
             }
             node = stack.pop();
-            result.add(node.value );
+            result.add(node.value);
             node = node.rightChild;
         }
         return result;
     }
-
     public List<String> inorderTraversalColor(Node root) {
         List<String> result = new ArrayList<>();
         if (root == null) {
@@ -546,6 +543,21 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
         return result;
     }
+
+    public List<Pair<T,Color>> inOrderArray(){
+        List<Pair<T,Color>> array = new ArrayList<>();
+        inOrderArrayHelper(this.root,array);
+        return array;
+    }
+
+    private void inOrderArrayHelper(Node x,List<Pair<T,Color>> array){
+        if (x != null) {
+            inOrder(x.leftChild);
+            array.add(Pair.of(x.value,x.color));
+            inOrder(x.rightChild);
+        }
+    }
+
     private void inOrder (Node x) {
         if (x != null) {
             inOrder(x.leftChild);
@@ -556,6 +568,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     public void printInOrder () {
         inOrder (this.root);
-        System.out.println();
+        if (size != 0) System.out.println();
     }
 }
