@@ -28,7 +28,11 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
 
         public Node getUncle() {
+
             Node grandParent = this.parent.parent;
+            if(grandParent == null){
+                return null;
+            }
             if (grandParent.leftChild != null && this.parent != grandParent.leftChild) {
                 return grandParent.leftChild;
             } else if (grandParent.rightChild != null && this.parent != grandParent.rightChild) {
@@ -144,82 +148,50 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         if (node.getParent().getColor() == Color.BLACK) {
             return;
         }
+        Node grandparent = node.getParent().getParent();
+        if(grandparent == null ){
+            return;
+        }
+
         Node parent = node.getParent();
         Node uncle = node.getUncle();
-        Node grandparent = node.getParent().getParent();
+
 
         if (uncle != null && uncle.getColor() == Color.RED) {
             uncle.setColor(Color.BLACK);
             parent.setColor(Color.BLACK);
             //We then check if the grandparent is not root to recolor it
             //System.out.println(grandparent.parent.leftChild.color);
-            if (grandparent!= root) {
+            if (grandparent != root) {
                 grandparent.setColor(Color.RED);
                 insertFixup(grandparent);
             }
             return;
         }
-        boolean isLeft = false;
-        if(! (grandparent == this.root) && grandparent.leftChild == parent )
-        {
-            isLeft = true;
-        }
-        Node temp ;
         if (parent.getRightChild() == node && grandparent.getRightChild() == parent) {
 
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
-            temp = rotateLeft(grandparent);
-            if(!(temp == root)){
-                if(isLeft){
-                    temp.parent.leftChild =  temp;
-                }else{
-                    temp.parent.rightChild=  temp;
-                }
-            }
-
-            root.parent =null;
+            rotateLeftAndAdjustParent(grandparent);
         } else if (parent.getLeftChild() == node && grandparent.getLeftChild() == parent) {
             grandparent.setColor(Color.RED);
             parent.setColor(Color.BLACK);
-            temp = rotateRight(grandparent);
-            if(!(temp == root)){
-                if(isLeft){
-                    temp.parent.leftChild =  temp;
-                }else{
-                    temp.parent.rightChild=  temp;
-                }
-            }
+            rotateRightAndAdjustParent(grandparent);
 
-            root.parent =null;
         } else if (parent.getLeftChild() == node && grandparent.getRightChild() == parent) {
-            temp = rotateRight(parent);
-            grandparent.setRightChild(temp);
+
+            rotateRightAndAdjustParent(parent);
+
             grandparent.setColor(Color.RED);
-            temp.setColor(Color.BLACK);
-            temp = rotateLeft(grandparent);
-            if(!(temp == root)){
-                if(isLeft){
-                    temp.parent.leftChild =  temp;
-                }else{
-                    temp.parent.rightChild=  temp;
-                }
-            }
-            root.parent =null;
+            parent.setColor(Color.BLACK);
+            rotateLeftAndAdjustParent(grandparent);
+
         } else if (parent.getRightChild() == node && grandparent.getLeftChild() == parent) {
-            temp = rotateLeft(parent);
-            grandparent.setRightChild(temp);
+            rotateLeftAndAdjustParent(parent);
             grandparent.setColor(Color.RED);
-            temp.setColor(Color.BLACK);
-            temp = rotateRight(grandparent);
-            if(!(temp == root)){
-                if(isLeft){
-                    temp.parent.leftChild =  temp;
-                }else{
-                    temp.parent.rightChild=  temp;
-                }
-            }
-            root.parent =null;
+            parent.setColor(Color.BLACK);
+            rotateRightAndAdjustParent(grandparent);
+
         }
 
     }
@@ -446,14 +418,19 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     }
 
     private Node search(T value, Node root) {
-        if (root == null) {
-            return null;
-        } else if (root.getValue().compareTo(value) == 0) {
+        try {
+            if (root == null) {
+                return null;
+            } else if (root.getValue().compareTo(value) == 0) {
+                return root;
+            } else if (root.getValue().compareTo(value) < 0) {
+                return search(value, root.getRightChild());
+            } else {
+                return search(value, root.getLeftChild());
+            }
+        }catch (Exception e){
+            //System.out.println(root.value + " " + root.leftChild.value + " " + root.rightChild.value );
             return root;
-        } else if (root.getValue().compareTo(value) < 0) {
-            return search(value, root.getRightChild());
-        } else {
-            return search(value, root.getLeftChild());
         }
     }
 
@@ -468,44 +445,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     private int heightHelper(Node node) {
         if (node == null) return 0;
         return 1 + Math.max(heightHelper(node.leftChild), heightHelper(node.rightChild));
-    }
-
-    private Node rotateRight(Node node) {
-        Node x = node.leftChild;
-        Node y = x.rightChild;
-        Node par2 = node.parent;
-        x.rightChild = node;
-        node.leftChild = y;
-        boolean par = false;
-        if(node.parent == null){
-            par = true;
-        }
-        node.parent = x;
-        x.parent = par2;
-        if (y != null) y.parent = node;
-        if(par){
-            this.root = x ;
-        }
-        return x;
-    }
-
-    private Node rotateLeft(Node node) {
-        Node x = node.rightChild;
-        Node y = x.leftChild;
-        Node par2 = node.parent;
-        x.leftChild = node;
-        node.rightChild = y;
-        boolean par = false;
-        if(node.parent == null){
-            par = true;
-        }
-        x.parent = par2;
-        node.parent = x;
-        if (y != null) y.parent = node;
-        if (par){
-            this.root = x ;
-        }
-        return x;
     }
 
     private void replaceParentsChild(Node parent, Node oldChild, Node newChild) {
@@ -538,47 +477,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         secondNode.color = temp;
     }
 
-    public List<T> inorderTraversal(Node root) {
-        List<T> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-        Stack<Node> stack = new Stack<>();
-        Node node = root;
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                node = node.leftChild;
-            }
-            node = stack.pop();
-            result.add(node.value);
-            node = node.rightChild;
-        }
-        return result;
-    }
-    public List<String> inorderTraversalColor(Node root) {
-        List<String> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-        Stack<Node> stack = new Stack<>();
-        Node node = root;
-        while (node != null || !stack.isEmpty()) {
-            while (node != null) {
-                stack.push(node);
-                node = node.leftChild;
-            }
-            node = stack.pop();
 
-            if(node.color == Color.BLACK)
-                result.add("Black");
-            else{
-                result.add("Red");
-            }
-            node = node.rightChild;
-        }
-        return result;
-    }
 
     public List<Triple<T, Color, Integer>> inOrderArray(){
         List<Triple<T,Color,Integer>> array = new ArrayList<>();
@@ -588,9 +487,9 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
     private void inOrderArrayHelper(Node x,List<Triple<T,Color,Integer>> array){
         if (x != null) {
-            inOrder(x.leftChild);
+            inOrderArrayHelper(x.leftChild,array);
             array.add(Triple.of(x.value,x.color,heightHelper(x)));
-            inOrder(x.rightChild);
+            inOrderArrayHelper(x.rightChild,array);
         }
     }
 
