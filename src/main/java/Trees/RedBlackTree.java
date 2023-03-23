@@ -179,19 +179,15 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             rotateRightAndAdjustParent(grandparent);
 
         } else if (parent.getLeftChild() == node && grandparent.getRightChild() == parent) {
-
+            node.parent.parent.setColor(Color.RED);
             rotateRightAndAdjustParent(parent);
-
-            grandparent.setColor(Color.RED);
-            parent.setColor(Color.BLACK);
-            rotateLeftAndAdjustParent(grandparent);
-
+            node.setColor(Color.BLACK);
+            rotateLeftAndAdjustParent(node.parent);
         } else if (parent.getRightChild() == node && grandparent.getLeftChild() == parent) {
+            node.parent.parent.setColor(Color.RED);
             rotateLeftAndAdjustParent(parent);
-            grandparent.setColor(Color.RED);
-            parent.setColor(Color.BLACK);
-            rotateRightAndAdjustParent(grandparent);
-
+            node.setColor(Color.BLACK);
+            rotateRightAndAdjustParent(node.parent);
         }
 
     }

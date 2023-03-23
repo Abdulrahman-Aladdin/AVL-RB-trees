@@ -35,7 +35,105 @@ public class RedBlackTreeTest {
         return true;
     }
     @Test
+    void Tes1(){
+        tree = new RedBlackTree<>();
+
+        Assertions.assertTrue(tree.insert(5));
+        Assertions.assertTrue(tree.insert(1));
+        Assertions.assertFalse(tree.insert(5));
+    }
+    @Test
     void Test2(){
+        tree = new RedBlackTree<>();
+
+        Assertions.assertTrue(tree.insert(5));
+        Assertions.assertTrue(tree.insert(1));
+        Assertions.assertTrue(tree.insert(6));
+        // value , color , height
+        List<Triple<Integer, RedBlackTree.Color,Integer>> expected = new ArrayList<>(List.of(
+                Triple.of(1, RedBlackTree.Color.RED,1),
+                Triple.of(5, RedBlackTree.Color.BLACK,2),
+                Triple.of(6, RedBlackTree.Color.RED,1)
+        ));
+
+        Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
+    }
+    @Test
+    void Test3(){
+        tree = new RedBlackTree<>();
+
+        Assertions.assertTrue(tree.insert(5));
+        Assertions.assertTrue(tree.insert(1));
+        Assertions.assertTrue(tree.insert(6));
+        Assertions.assertTrue(tree.insert(10));
+        Assertions.assertTrue(tree.insert(47));
+        Assertions.assertTrue(tree.insert(4));
+        Assertions.assertTrue(tree.insert(11));
+        Assertions.assertTrue(tree.insert(12));
+
+
+        // value , color , height
+        List<Triple<Integer, RedBlackTree.Color,Integer>> expected = new ArrayList<>(List.of(
+                Triple.of(1, RedBlackTree.Color.BLACK,2),
+                Triple.of(4, RedBlackTree.Color.RED,1),
+                Triple.of(5, RedBlackTree.Color.BLACK,4),
+                Triple.of(6, RedBlackTree.Color.BLACK,1),
+                Triple.of(10, RedBlackTree.Color.RED,3),
+                Triple.of(11, RedBlackTree.Color.RED,1),
+                Triple.of(12, RedBlackTree.Color.BLACK,2),
+                Triple.of(47, RedBlackTree.Color.RED,1)
+        ));
+
+        Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
+    }
+
+    @Test
+    void Test4(){
+        tree = new RedBlackTree<>();
+
+        Assertions.assertTrue(tree.insert(6));
+        Assertions.assertTrue(tree.insert(12));
+        Assertions.assertTrue(tree.insert(47));
+        Assertions.assertTrue(tree.insert(11));
+        Assertions.assertTrue(tree.insert(4));
+        Assertions.assertTrue(tree.insert(10));
+        Assertions.assertTrue(tree.insert(5));
+        Assertions.assertTrue(tree.insert(1));
+
+        // value , color , height
+        List<Triple<Integer, RedBlackTree.Color,Integer>> expected = new ArrayList<>(List.of(
+                Triple.of(1, RedBlackTree.Color.RED,1),
+                Triple.of(4, RedBlackTree.Color.BLACK,2),
+                Triple.of(5, RedBlackTree.Color.RED,1),
+                Triple.of(6, RedBlackTree.Color.RED,3),
+                Triple.of(10, RedBlackTree.Color.RED,1),
+                Triple.of(11, RedBlackTree.Color.BLACK,2),
+                Triple.of(12, RedBlackTree.Color.BLACK,4),
+                Triple.of(47, RedBlackTree.Color.BLACK,1)
+        ));
+
+        Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
+    }
+
+    @Test
+    void Test5(){
+        tree = new RedBlackTree<>();
+        Assertions.assertTrue(tree.insert(6));
+        Assertions.assertTrue(tree.insert(5));
+        Assertions.assertFalse(tree.insert(6));
+        Assertions.assertTrue(tree.insert(1));
+        // value , color , height
+        List<Triple<Integer, RedBlackTree.Color,Integer>> expected = new ArrayList<>(List.of(
+                Triple.of(1, RedBlackTree.Color.RED,1),
+                Triple.of(5, RedBlackTree.Color.BLACK,2),
+                Triple.of(6, RedBlackTree.Color.RED,1)
+        ));
+
+        Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
+    }
+
+    @Test
+    void Test6(){
         tree = new RedBlackTree<>();
 
         Assertions.assertTrue(tree.insert(5));
@@ -51,5 +149,25 @@ public class RedBlackTreeTest {
 
         Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
     }
+
+    @Test
+    void Test7(){
+        tree = new RedBlackTree<>();
+
+        Assertions.assertTrue(tree.insert(10));
+        Assertions.assertTrue(tree.insert(1));
+        Assertions.assertTrue(tree.insert(6));
+        Assertions.assertTrue(tree.insert(15));
+        // value , color , height
+        List<Triple<Integer, RedBlackTree.Color,Integer>> expected = new ArrayList<>(List.of(
+                Triple.of(1, RedBlackTree.Color.BLACK,1),
+                Triple.of(6, RedBlackTree.Color.BLACK,3),
+                Triple.of(10, RedBlackTree.Color.BLACK,2),
+                Triple.of(15, RedBlackTree.Color.RED,1)
+        ));
+
+        Assertions.assertTrue(compareTwoInorderArrays(tree.inOrderArray(),expected));
+    }
+
 
 }
