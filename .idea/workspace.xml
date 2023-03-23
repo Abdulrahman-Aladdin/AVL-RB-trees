@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="done errors in insert in RB2">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/BatchDeleteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/BatchDeleteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/BatchInsertCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/BatchInsertCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/CLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/DeleteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/DeleteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/GetDictionaryHeightCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/GetDictionaryHeightCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/GetDictionarySizeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/GetDictionarySizeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/InsertCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/InsertCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/SearchCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Application/SearchCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/RedBlackTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Trees/RedBlackTreeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/RedBlackTree.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Trees/RedBlackTreeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test140.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test140.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +48,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+  </component>
   <component name="ProjectId" id="2NIPTAU8kbLok5jhfWvgklOoXcT" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -47,16 +59,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.RedBlackTreeTest">
-    <configuration name="RedBlackTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-Red-Black-trees" />
+}]]></component>
+  <component name="RunManager" selected="JUnit.RedBlackTreeTest (1)">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Trees.Main" />
+      <module name="AVL-RB-trees" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Trees.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedBlackTreeTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Trees.*" />
@@ -70,8 +96,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedBlackTreeTest.Tes1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-Red-Black-trees" />
+    <configuration name="RedBlackTreeTest.Test17" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Trees.*" />
@@ -80,14 +106,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="Trees" />
       <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Tes1" />
+      <option name="METHOD_NAME" value="Test17" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedBlackTreeTest.Test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-Red-Black-trees" />
+    <configuration name="RedBlackTreeTest.Test24" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Trees.*" />
@@ -96,14 +122,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="Trees" />
       <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Test2" />
+      <option name="METHOD_NAME" value="Test24" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedBlackTreeTest.Test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-Red-Black-trees" />
+    <configuration name="RedBlackTreeTest.Test25" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Trees.*" />
@@ -112,23 +138,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="Trees" />
       <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Test5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RedBlackTreeTest.Test7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-Red-Black-trees" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Trees.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Trees" />
-      <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Test7" />
+      <option name="METHOD_NAME" value="Test25" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -136,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RedBlackTreeTest" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Tes1" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Test7" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Test5" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Test2" />
+        <item itemvalue="JUnit.RedBlackTreeTest (1)" />
+        <item itemvalue="JUnit.RedBlackTreeTest.Test25" />
+        <item itemvalue="JUnit.RedBlackTreeTest.Test24" />
+        <item itemvalue="JUnit.RedBlackTreeTest.Test17" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -153,6 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679348632059</updated>
       <workItem from="1679348635567" duration="9144000" />
+      <workItem from="1679592056042" duration="11216000" />
     </task>
     <task id="LOCAL-00001" summary="implements delete in AVL and the interface">
       <created>1679355305206</created>

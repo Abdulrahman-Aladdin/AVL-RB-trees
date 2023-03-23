@@ -12,13 +12,13 @@ public class SearchCommand extends AbstractCommand<Void>{
     public Void execute(String ignored) {
 
         System.out.print("Enter your input : ");
-        boolean state = dictionary.search(scanner.next());
+        boolean state = dictionary.search(scanner.nextLine());
 
+        CLI.clearScreen();
         if (state)
             System.out.println("Word found");
         else
             System.out.println("Word not found");
-
 
         return null;
     }

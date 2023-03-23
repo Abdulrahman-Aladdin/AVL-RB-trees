@@ -14,8 +14,9 @@ public class DeleteCommand extends AbstractCommand<Void>{
 
 
         System.out.print("Enter your input : ");
-        boolean state = dictionary.delete(scanner.next());
+        boolean state = dictionary.delete(scanner.nextLine());
 
+        CLI.clearScreen();
         if (state)
             System.out.println("Deletion completed successfully");
         else

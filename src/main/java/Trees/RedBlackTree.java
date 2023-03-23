@@ -492,7 +492,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     private void inOrder (Node x) {
         if (x != null) {
             inOrder(x.leftChild);
-            int h= heightHelper(x);
+            int h = heightHelper(x);
             System.out.print(x.value + " " + x.color + " " + heightHelper(x) + " ");
             inOrder(x.rightChild);
         }

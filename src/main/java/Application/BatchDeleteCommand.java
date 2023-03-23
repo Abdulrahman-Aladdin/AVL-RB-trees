@@ -16,6 +16,8 @@ public class BatchDeleteCommand extends AbstractCommand<Void>{
 
         Pair<Integer,Integer> output = dictionary.batchDelete(scanner.nextLine());
 
+        CLI.clearScreen();
+
         if (output == null){
             System.out.println("File not found");
             return null;

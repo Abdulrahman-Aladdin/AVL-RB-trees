@@ -12,13 +12,13 @@ public class InsertCommand extends AbstractCommand<Void>{
     public Void execute(String ignored) {
 
         System.out.print("Enter your input : ");
-        boolean state = dictionary.insert(scanner.next());
+        boolean state = dictionary.insert(scanner.nextLine());
 
+        CLI.clearScreen();
         if (state)
             System.out.println("Insertion completed successfully");
         else
             System.out.println("Error , word already exist");
-
 
         dictionary.printDictionary();
         return null;

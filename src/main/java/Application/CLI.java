@@ -3,7 +3,6 @@ package Application;
 import _Dictionary.IDictionary;
 import _Dictionary.Dictionary;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.*;
@@ -45,35 +44,48 @@ public class CLI implements Runnable {
             dictionary = (Dictionary) initialize.execute(scanner.next());
 
             if (dictionary == null){
-                clearScreen();
+                CLI.clearScreen();
                 out.println("Enter a valid option");
             } else break;
         }
 
+        CLI.clearScreen();
 
         while (true){
-            clearScreen();
             showMenu_2();
             AbstractCommand<Void> command = getCommandFromMenu(scanner.next());
 
             if (command == null){
-                clearScreen();
+                CLI.clearScreen();
                 out.println("Enter a valid option");
                 continue;
             }
+
 
             command.execute(null);
         }
     }
 
-    private void clearScreen() {
-        try {
-            if (getProperty("os.name").contains("Windows"))
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
-                Runtime.getRuntime().exec("clear");
+    public static void clearScreen() {
+        for (int i = 0; i < 100; i++) out.println();
 
-        } catch (IOException | InterruptedException ignored) {}
+
+        /*try{
+            String operatingSystem = System.getProperty("os.name");
+
+            if(operatingSystem.contains("Windows")){
+                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
+                Process startProcess = pb.inheritIO().start();
+                startProcess.waitFor();
+            } else {
+                ProcessBuilder pb = new ProcessBuilder("clear");
+                Process startProcess = pb.inheritIO().start();
+
+                startProcess.waitFor();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }*/
     }
 
     private AbstractCommand<Void> getCommandFromMenu(String commandNumber){

@@ -12,6 +12,8 @@ public class GetDictionaryHeightCommand extends AbstractCommand<Void>{
     @Override
     public Void execute(String ignored) {
         int height = dictionary.treeHeight();
+
+        CLI.clearScreen();
         System.out.println("Dictionary height = " + height);
         return null;
     }

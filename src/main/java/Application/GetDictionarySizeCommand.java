@@ -13,6 +13,7 @@ public class GetDictionarySizeCommand extends AbstractCommand<Void>{
     public Void execute(String ignored) {
         int size = dictionary.size();
 
+        CLI.clearScreen();
         System.out.println("Dictionary size = " + size);
 
         return null;

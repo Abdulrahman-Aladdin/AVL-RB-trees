@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AVL-Red-Black-trees" />
+        <module name="AVL-RB-trees" />
       </profile>
     </annotationProcessing>
   </component>
