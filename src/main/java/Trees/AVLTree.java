@@ -19,7 +19,7 @@ public class AVLTree<T extends Comparable<T>> implements IBST<T> {
     }
 
     private final Node nill = new Node();
-    private Node root = nill;
+    public Node root = nill;
     private int size = 0;
 
     private Node insertNode (Node node, T value) {
@@ -67,10 +67,23 @@ public class AVLTree<T extends Comparable<T>> implements IBST<T> {
         return height(node.left) - height(node.right);
     }
 
+    public T getMaxValue(Node node){
+        return maxValueNode(node).value;
+    }
+    public T getMinValue(Node node){
+        return minValueNode(node).value;
+    }
     private Node minValueNode(Node node) {
         Node current = node;
         while (current.left != nill) {
             current = current.left;
+        }
+        return current;
+    }
+    private Node maxValueNode(Node node) {
+        Node current = node;
+        while (current.right != nill) {
+            current = current.right;
         }
         return current;
     }
@@ -191,7 +204,6 @@ public class AVLTree<T extends Comparable<T>> implements IBST<T> {
         return false;
     }
 
-    @Override
     public int height() {
         return height(this.root);
     }
@@ -199,6 +211,33 @@ public class AVLTree<T extends Comparable<T>> implements IBST<T> {
     public void printInOrder () {
         inOrder (this.root);
         System.out.println();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        toString(root, sb);
+        return sb.toString();
+    }
+
+    private void toString(Node node, StringBuilder sb) {
+        if (node != nill) {
+            sb.append(node.value).append(" (").append(node.left.height-node.right.height).append(")\n");
+            toString(node.left, sb);
+            toString(node.right, sb);
+        }
+    }
+
+    public boolean isBalanced() {
+        return isBalanced(this.root);
+    }
+
+    private boolean isBalanced(Node node) {
+        if (node != nill) {
+            if (height(node.left)-height(node.right)>1||height(node.left)-height(node.right)<-1)
+                return false;
+             return isBalanced(node.left) && isBalanced(node.right);
+        }
+        return true;
     }
 
 }
