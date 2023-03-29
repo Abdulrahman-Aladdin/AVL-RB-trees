@@ -4,7 +4,6 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
@@ -30,7 +29,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         public Node getUncle() {
 
             Node grandParent = this.parent.parent;
-            if(grandParent == null){
+            if (grandParent == null) {
                 return null;
             }
             if (grandParent.leftChild != null && this.parent != grandParent.leftChild) {
@@ -39,17 +38,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                 return grandParent.rightChild;
             }
             return null;
-        }
-
-        public Node getSibling(Node node) {
-            Node parent = node.parent;
-            if (node == parent.leftChild) {
-                return parent.rightChild;
-            } else if (node == parent.rightChild) {
-                return parent.leftChild;
-            } else {
-                throw new IllegalStateException("Parent is not a child of its grandparent");
-            }
         }
 
 
@@ -97,7 +85,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     Node root, nil;
     int size = 0;
 
-
     public RedBlackTree() {
         this.root = null;
         this.nil = new Node(Color.BLACK, null);
@@ -106,7 +93,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     public boolean insert(T value) {
         Node node = new Node(Color.RED, value);
         Node current = this.root, current2 = null;
-        if(search(value)){
+        if (search(value)) {
             return false;
         }
         if (current == null) {
@@ -127,14 +114,11 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
                 return false;
             }
         }
-        if (current2.getValue().compareTo(value) > 0)
-        {
+        if (current2.getValue().compareTo(value) > 0) {
             current2.leftChild = node;
             node.parent = current2;
-        }
-        else
-        {
-            current2.rightChild =node;
+        } else {
+            current2.rightChild = node;
             node.parent = current2;
         }
         size++;
@@ -149,7 +133,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             return;
         }
         Node grandparent = node.getParent().getParent();
-        if(grandparent == null ){
+        if (grandparent == null) {
             return;
         }
 
@@ -205,14 +189,14 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         if (node.leftChild == null || node.rightChild == null) {
             dbNode = deleteNodeWithZeroOrOneChild(node);
 
-            if (isBlack(node) && isRed(dbNode)){
+            if (isBlack(node) && isRed(dbNode)) {
                 dbNode.color = Color.BLACK;
                 deletedNodeColor = Color.RED;
-            } else if (isRed(node) && dbNode != null &&isBlack(dbNode)){
+            } else if (isRed(node) && dbNode != null && isBlack(dbNode)) {
                 deletedNodeColor = Color.RED;
-            } else if (isBlack(node) && dbNode != null && isBlack(dbNode)){
+            } else if (isBlack(node) && dbNode != null && isBlack(dbNode)) {
                 deletedNodeColor = Color.BLACK;
-            } else if (dbNode == null){
+            } else if (dbNode == null) {
                 deletedNodeColor = Color.RED;
             }
 
@@ -223,14 +207,14 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
 
             dbNode = deleteNodeWithZeroOrOneChild(inOrderSuccessor);
 
-            if (isBlack(inOrderSuccessor) && isRed(dbNode)){
+            if (isBlack(inOrderSuccessor) && isRed(dbNode)) {
                 dbNode.color = Color.BLACK;
                 deletedNodeColor = Color.RED;
-            } else if (isRed(inOrderSuccessor) && dbNode != null &&isBlack(dbNode)){
+            } else if (isRed(inOrderSuccessor) && dbNode != null && isBlack(dbNode)) {
                 deletedNodeColor = Color.RED;
-            } else if (isBlack(inOrderSuccessor) && dbNode != null && isBlack(dbNode)){
+            } else if (isBlack(inOrderSuccessor) && dbNode != null && isBlack(dbNode)) {
                 deletedNodeColor = Color.BLACK;
-            } else if (dbNode == null){
+            } else if (dbNode == null) {
                 deletedNodeColor = Color.RED;
             }
         }
@@ -274,7 +258,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
     }
 
-    public void deleteFixup(Node db) {
+    private void deleteFixup(Node db) {
 
         Node dbParent = db.parent;
 
@@ -340,7 +324,6 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
         }
 
 
-
         // case 5 : db sibling is black , near sibling child is red
         // db is right
         if (dbParent.rightChild == db) {
@@ -375,7 +358,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             Node dbSiblingLeft = dbSibling.leftChild;
             Node dbSiblingRight = dbSibling.rightChild;
             if (isBlack(dbSibling) && isRed(dbSiblingLeft)) {
-                swapColor(dbSibling,dbParent);
+                swapColor(dbSibling, dbParent);
                 rotateRightAndAdjustParent(dbParent);
                 dbSiblingLeft.color = Color.BLACK;
             }
@@ -386,7 +369,7 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
             Node dbSiblingLeft = dbSibling.leftChild;
             Node dbSiblingRight = dbSibling.rightChild;
             if (isBlack(dbSibling) && isRed(dbSiblingRight)) {
-                swapColor(dbSibling,dbParent);
+                swapColor(dbSibling, dbParent);
                 rotateLeftAndAdjustParent(dbParent);
                 dbSiblingRight.color = Color.BLACK;
             }
@@ -414,19 +397,14 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     }
 
     private Node search(T value, Node root) {
-        try {
-            if (root == null) {
-                return null;
-            } else if (root.getValue().compareTo(value) == 0) {
-                return root;
-            } else if (root.getValue().compareTo(value) < 0) {
-                return search(value, root.getRightChild());
-            } else {
-                return search(value, root.getLeftChild());
-            }
-        }catch (Exception e){
-            //System.out.println(root.value + " " + root.leftChild.value + " " + root.rightChild.value );
+        if (root == null) {
+            return null;
+        } else if (root.getValue().compareTo(value) == 0) {
             return root;
+        } else if (root.getValue().compareTo(value) < 0) {
+            return search(value, root.getRightChild());
+        } else {
+            return search(value, root.getLeftChild());
         }
     }
 
@@ -474,32 +452,30 @@ public class RedBlackTree<T extends Comparable<T>> implements IBST<T> {
     }
 
 
-
-    public List<Triple<T, Color, Integer>> inOrderArray(){
-        List<Triple<T,Color,Integer>> array = new ArrayList<>();
-        inOrderArrayHelper(this.root,array);
+    public List<Triple<T, Color, Integer>> inOrderArray() {
+        List<Triple<T, Color, Integer>> array = new ArrayList<>();
+        inOrderArrayHelper(this.root, array);
         return array;
     }
 
-    private void inOrderArrayHelper(Node x,List<Triple<T,Color,Integer>> array){
+    private void inOrderArrayHelper(Node x, List<Triple<T, Color, Integer>> array) {
         if (x != null) {
-            inOrderArrayHelper(x.leftChild,array);
-            array.add(Triple.of(x.value,x.color,heightHelper(x)));
-            inOrderArrayHelper(x.rightChild,array);
+            inOrderArrayHelper(x.leftChild, array);
+            array.add(Triple.of(x.value, x.color, heightHelper(x)));
+            inOrderArrayHelper(x.rightChild, array);
         }
     }
 
-    private void inOrder (Node x) {
+    private void inOrder(Node x) {
         if (x != null) {
             inOrder(x.leftChild);
-            int h = heightHelper(x);
             System.out.print(x.value + " " + x.color + " " + heightHelper(x) + " ");
             inOrder(x.rightChild);
         }
     }
 
-    public void printInOrder () {
-        inOrder (this.root);
+    public void printInOrder() {
+        inOrder(this.root);
         if (size != 0) System.out.println();
     }
 
