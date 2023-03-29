@@ -5,19 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="done errors in insert in RB2">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Trees/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/AVLTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/_Dictionary/DictionaryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Trees/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Trees/AVLTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Trees/AVLTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Trees/AVLTreeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Trees/AVLTreeTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -37,6 +44,9 @@
   <component name="ProblemsViewState">
     <option name="autoscrollToSource" value="true" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2NIPTAU8kbLok5jhfWvgklOoXcT" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,24 +55,69 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "nodejs_package_manager_path": "npm",
+    "ruby.rails.projectView.checked": "true"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.RedBlackTreeTest (1)">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Trees.Main" />
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="_Dictionary" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DictionaryTest">
+    <configuration name="DictionaryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AVL-RB-trees" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Trees.*" />
+          <option name="PATTERN" value="_Dictionary.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="_Dictionary" />
+      <option name="MAIN_CLASS_NAME" value="_Dictionary.DictionaryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DictionaryTest.AVLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="_Dictionary.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="_Dictionary" />
+      <option name="MAIN_CLASS_NAME" value="_Dictionary.DictionaryTest" />
+      <option name="METHOD_NAME" value="AVLTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DictionaryTest.RedBlackTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AVL-RB-trees" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="_Dictionary.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="_Dictionary" />
+      <option name="MAIN_CLASS_NAME" value="_Dictionary.DictionaryTest" />
+      <option name="METHOD_NAME" value="RedBlackTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -78,38 +133,6 @@
       <option name="PACKAGE_NAME" value="Trees" />
       <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RedBlackTreeTest.Test17" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-RB-trees" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Trees.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Trees" />
-      <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Test17" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RedBlackTreeTest.Test24" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AVL-RB-trees" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Trees.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Trees" />
-      <option name="MAIN_CLASS_NAME" value="Trees.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="Test24" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DictionaryTest" />
+        <item itemvalue="JUnit.DictionaryTest.RedBlackTest" />
+        <item itemvalue="JUnit.DictionaryTest.AVLTest" />
         <item itemvalue="JUnit.RedBlackTreeTest (1)" />
         <item itemvalue="JUnit.RedBlackTreeTest.Test25" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Test24" />
-        <item itemvalue="JUnit.RedBlackTreeTest.Test17" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -150,6 +173,7 @@
       <updated>1679348632059</updated>
       <workItem from="1679348635567" duration="9144000" />
       <workItem from="1679592056042" duration="11216000" />
+      <workItem from="1680121958690" duration="1930000" />
     </task>
     <task id="LOCAL-00001" summary="implements delete in AVL and the interface">
       <created>1679355305206</created>

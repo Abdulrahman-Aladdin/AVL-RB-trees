@@ -10,6 +10,8 @@ class AVLTreeTest {
     void setUp() {
         avlTree = new AVLTree<>();
     }
+
+
     @Test
     void testInsert() {
         avlTree.insert(5);
