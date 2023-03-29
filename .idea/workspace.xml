@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f906ce-a3ae-4ac5-9d32-68ac4ddbdfa8" name="Changes" comment="done errors in insert in RB2">
-      <change afterPath="$PROJECT_DIR$/testBatchDeleteAVL.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testBatchInsertAVL.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/_Dictionary/DictionaryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/_Dictionary/DictionaryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/_Dictionary/DictionaryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/_Dictionary/DictionaryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Trees/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Trees/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +170,7 @@
       <workItem from="1679348635567" duration="9144000" />
       <workItem from="1679592056042" duration="11216000" />
       <workItem from="1680121958690" duration="2019000" />
-      <workItem from="1680126568672" duration="1300000" />
+      <workItem from="1680126568672" duration="1614000" />
     </task>
     <task id="LOCAL-00001" summary="implements delete in AVL and the interface">
       <created>1679355305206</created>

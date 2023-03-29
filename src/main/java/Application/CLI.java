@@ -41,7 +41,7 @@ public class CLI implements Runnable {
         while (true) {
             showMenu_1();
             AbstractCommand<IDictionary> initialize = new InitializeCommand();
-            dictionary = (Dictionary) initialize.execute(scanner.next());
+            dictionary = (Dictionary) initialize.execute(scanner.nextLine());
 
             if (dictionary == null){
                 CLI.clearScreen();
@@ -53,7 +53,7 @@ public class CLI implements Runnable {
 
         while (true){
             showMenu_2();
-            AbstractCommand<Void> command = getCommandFromMenu(scanner.next());
+            AbstractCommand<Void> command = getCommandFromMenu(scanner.nextLine());
 
             if (command == null){
                 CLI.clearScreen();
